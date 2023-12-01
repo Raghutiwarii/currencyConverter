@@ -9,3 +9,6 @@ made by using React, Axios & Chakra-UI.
 2. `npm i axios`
 3. `npm i @chakra-ui/react`
 4. `npm start`
+
+
+Project Hosted Live - https://currconverterapp.netlify.app/
