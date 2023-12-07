@@ -3,6 +3,7 @@ import { RepeatIcon } from '@chakra-ui/icons';
 import { Text, Spinner, Box, Grid, GridItem } from '@chakra-ui/react';
 import { FormLabel, Input, Avatar, Flex, Select } from '@chakra-ui/react';
 
+
 const ConverterInput = ({ value, onAmountChange }) => {
   return (
     <>
@@ -109,6 +110,14 @@ const Converter = () => {
     currencyList,
   } = useCurrency();
 
+  const handleAmountChange = (value) => {
+    if (parseFloat(value) < 0) {
+      window.alert("Amount cannot be negative");
+      return;
+    }
+    setAmount(value);
+  };
+
   if (isError)
     return (
       <Text fontWeight="bold" fontSize="3xl" color="red" my="10">
@@ -127,6 +136,7 @@ const Converter = () => {
         emptyColor="purple.200"
       />
     );
+
   return (
     <Box width={{ base: '90vw', sm: '65vw' }} margin="0 auto">
       <ConverterHeader />
@@ -171,7 +181,7 @@ const Converter = () => {
           />
         </GridItem>
         <GridItem colSpan={2}>
-          <ConverterInput value={amount} onAmountChange={setAmount} />
+          <ConverterInput value={amount} onAmountChange={handleAmountChange} />
         </GridItem>
         <GridItem colSpan={3} justifySelf="right" alignSelf="right">
           <ConverterDisplay
